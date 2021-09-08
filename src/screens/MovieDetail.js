@@ -25,7 +25,6 @@ export default function MovieDetail(props) {
   const [showMore, setShowMore] = useState(true);
   const [credits, setCredits] = useState();
   const [technical, setTechnical] = useState();
-  const [isLiked, setIsLiked] = useState();
 
   useEffect(() => {
     getDetail();
@@ -160,7 +159,6 @@ export default function MovieDetail(props) {
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'space-evenly',
-
                   marginTop: -heightToDp(3),
                 }}>
                 <Text
@@ -250,7 +248,6 @@ export default function MovieDetail(props) {
             </Text>
 
             <FlatList
-              //ListHeaderComponent={renderHeader}
               horizontal={true}
               keyExtractor={(item, index) => index.toString()}
               data={credits}

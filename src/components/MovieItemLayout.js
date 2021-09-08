@@ -3,12 +3,10 @@ import {
   TouchableOpacity,
   Text,
   Image,
-  SafeAreaView,
   View,
-  Platform,
   ImageBackground,
 } from 'react-native';
-import {heightToDp, widthToDp} from '../utils/Dimensions';
+import {widthToDp} from '../utils/Dimensions';
 
 export const MovieItemLayout = props => {
   return (

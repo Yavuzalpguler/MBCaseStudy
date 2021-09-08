@@ -1,14 +1,6 @@
-import React, {useContext} from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  Image,
-  SafeAreaView,
-  View,
-  Platform,
-  ImageBackground,
-} from 'react-native';
-import {heightToDp, widthToDp} from '../utils/Dimensions';
+import React from 'react';
+import {TouchableOpacity, Text, Image, ImageBackground} from 'react-native';
+import {widthToDp} from '../utils/Dimensions';
 
 export const MovieItem = props => {
   return (

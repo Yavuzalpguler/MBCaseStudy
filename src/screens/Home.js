@@ -21,10 +21,9 @@ export default function Home(props) {
   const [movie, setMovie] = useState();
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
-  const [fullData, setFullData] = useState([]);
+
   const [queryPage, setQueryPage] = useState(1);
   const [isLayout, setIsLayout] = useState(false);
-  const [likeMovies, setLikeMovies] = useState();
 
   const {bookmarks} = useSelector(state => state.movieReducer);
 
@@ -191,7 +190,6 @@ export default function Home(props) {
         </TouchableOpacity>
       </View>
       <FlatList
-        //ListHeaderComponent={renderHeader}
         key={isLayout ? 1 : 2}
         numColumns={isLayout ? 1 : 2}
         keyExtractor={(item, index) => index.toString()}
