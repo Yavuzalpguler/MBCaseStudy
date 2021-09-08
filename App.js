@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image} from 'react-native';
+import {Image, LogBox} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
@@ -40,7 +40,7 @@ function TabScreen() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Tab"
+        name="Home"
         component={Home}
         options={() => ({
           tabBarLabel: () => {
@@ -90,6 +90,7 @@ function TabScreen() {
 }
 
 export default function App() {
+  LogBox.ignoreAllLogs();
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -103,13 +104,14 @@ export default function App() {
                 headerShown: false,
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
               }}
-              name={'Home'}
+              name={'Tab'}
               component={TabScreen}
             />
             <Stack.Screen
               options={{
                 headerShown: true,
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                headerBackTitle: 'Home',
               }}
               name={'Movie details'}
               component={MovieDetail}
