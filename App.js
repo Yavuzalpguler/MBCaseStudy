@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, View} from 'react-native';
+import {Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
@@ -17,8 +17,7 @@ import {Provider} from 'react-redux';
 import movieReducer from './src/redux/reducers/reducer';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import {persistStore, persistReducer} from 'redux-persist';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {createTransform} from 'redux-persist';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import thunk from 'redux-thunk';
 
@@ -40,8 +39,52 @@ const Stack = createStackNavigator();
 function TabScreen() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Tab"
+        component={Home}
+        options={() => ({
+          tabBarLabel: () => {
+            return null;
+          },
+          tabBarIcon: () => {
+            return (
+              <Image
+                resizeMode="contain"
+                style={{
+                  height: 20,
+                  width: 20,
+                  alignSelf: 'center',
+                  justifyContent: 'center',
+                }}
+                source={require('./src/assets/home.png')}
+              />
+            );
+          },
+        })}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={() => ({
+          tabBarLabel: () => {
+            return null;
+          },
+          tabBarIcon: () => {
+            return (
+              <Image
+                resizeMode="contain"
+                style={{
+                  height: 20,
+                  width: 20,
+                  alignSelf: 'center',
+                  justifyContent: 'center',
+                }}
+                source={require('./src/assets/user.png')}
+              />
+            );
+          },
+        })}
+      />
     </Tab.Navigator>
   );
 }

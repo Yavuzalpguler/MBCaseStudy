@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -9,6 +9,103 @@ import {
 import {widthToDp} from '../utils/Dimensions';
 
 export const MovieItemLayout = props => {
+  const [genreList, setGenreList] = useState([]);
+  let genres = [
+    {
+      id: 28,
+      name: 'Action',
+    },
+    {
+      id: 12,
+      name: 'Adventure',
+    },
+    {
+      id: 16,
+      name: 'Animation',
+    },
+    {
+      id: 35,
+      name: 'Comedy',
+    },
+    {
+      id: 80,
+      name: 'Crime',
+    },
+    {
+      id: 99,
+      name: 'Documentary',
+    },
+    {
+      id: 18,
+      name: 'Drama',
+    },
+    {
+      id: 10751,
+      name: 'Family',
+    },
+    {
+      id: 14,
+      name: 'Fantasy',
+    },
+    {
+      id: 36,
+      name: 'History',
+    },
+    {
+      id: 27,
+      name: 'Horror',
+    },
+    {
+      id: 10402,
+      name: 'Music',
+    },
+    {
+      id: 9648,
+      name: 'Mystery',
+    },
+    {
+      id: 10749,
+      name: 'Romance',
+    },
+    {
+      id: 878,
+      name: 'Science Fiction',
+    },
+    {
+      id: 10770,
+      name: 'TV Movie',
+    },
+    {
+      id: 53,
+      name: 'Thriller',
+    },
+    {
+      id: 10752,
+      name: 'War',
+    },
+    {
+      id: 37,
+      name: 'Western',
+    },
+  ];
+
+  useEffect(() => {
+    setGenreList(mapGenre(genres, props.item.genre_ids));
+  }, []);
+
+  function mapGenre(genres, genre_ids) {
+    let genreList = [];
+    for (let i = 0; i < genre_ids.length; i++) {
+      for (let j = 0; j < genres.length; j++) {
+        if (genres[j].id == genre_ids[i]) {
+          genreList.push(genres[j].name);
+        }
+      }
+    }
+
+    return genreList;
+  }
+
   return (
     <TouchableOpacity
       onPress={props.onPress}
@@ -79,7 +176,9 @@ export const MovieItemLayout = props => {
               {props.item.release_date.slice(0, 4)} |{' '}
               {props.item.original_language.toUpperCase()}
             </Text>
-            <Text style={{}}>Genre</Text>
+            <Text style={{fontSize: 10, color: 'gray', marginTop: 2}}>
+              {genreList.join('/')}
+            </Text>
           </View>
           <View style={{justifyContent: 'flex-end'}}>
             <Text
